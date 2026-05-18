@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Biolab & Co</title>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="./src/assets/images/logoAba.svg" />
+    <link rel="stylesheet" href="./src/styles/global.css" />
+
+    <!-- Importando font do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Oranienbaum&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Cabeçalho da página -->
+    <header class="NavBar">
+        <!-- Logotipo a esquerda  -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="./src/assets/images/biolabECo.svg" alt="Logotipo da Biolab & Co" />
+            </a>
+        </div>
+
+        <!-- Navegação principal -->
+        <nav class="navegacao-principal">
+            <ul>
+                <!-- ============================================================ -->
+                <!-- Item Institucional com Submenu Mega -->
+                <!-- ========================================================= -->
+                <li class="dropdown-item">
+                    <div class="dropdown-header">
+                        <a href="">Institucional</a>
+                        <button class="seta-dropdown">
+                            <img src="./src/assets/images/setaNavBar.svg" alt="Seta para baixo" />
+                        </button>
+                    </div>
+
+                    <!-- Submenu com efeito blur -->
+                    <div class="mega-menu">
+                        <div class="mega-menu-col">
+                            <h3>Institucional</h3>
+                            <ul>
+                                <li><a href="#">Sobre a Biolab & Co</a></li>
+                                <li><a href="#">Nossa História</a></li>
+                                <li><a href="#">Área de Atuação</a></li>
+                                <li><a href="#">Nossas Causas</a></li>
+                                <li><a href="#">Prêmios/Reconhecimentos</a></li>
+                                <li><a href="#">Área de Imprensa</a></li>
+                                <li><a href="#">Compliance e Ouvidoria</a></li>
+                            </ul>
+                        </div>
+                </li>
+                <!-- ============================================================ -->
+                <!-- Item Ser Biolab & Co com Submenu Mega -->
+                <!-- ========================================================= -->
+                <li class="dropdown-item">
+                    <div class="dropdown-header">
+                        <a href="">Ser Biolab & Co</a>
+                        <button class="seta-dropdown">
+                            <img src="./src/assets/images/setaNavBar.svg" alt="Seta para baixo" />
+                        </button>
+                    </div>
+
+                    <div class="mega-menu">
+                        <div class="mega-menu-col">
+                            <h3>Gente & Gestão</h3>
+                            <ul>
+                                <li><a href="#">Gente & Gestão na Biolab</a></li>
+                                <li><a href="#">Conexção Profunda</a></li>
+                                <li><a href="#">Crescimento Pessoal e Profissional</a></li>
+                                <li><a href="#">Experiência de Vida e Bem-Estar Integral</a></li>
+                                <li><a href="#">Trabalhe conosco</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <!-- ============================================================ -->
+                <!-- Item Produtos com Submenu Mega -->
+                <!-- ========================================================= -->
+                <li class="dropdown-item">
+                    <div class="dropdown-header">
+                        <a href="">Produtos</a>
+                        <button class="seta-dropdown">
+                            <img src="./src/assets/images/setaNavBar.svg" alt="Seta para baixo" />
+                        </button>
+                    </div>
+
+                    <div class="mega-menu">
+                        <div class="mega-menu-col">
+                            <h3>Produtos</h3>
+                            <ul>
+                                <li><a href="#">Biolab Farmacêutica</a></li>
+                                <li><a href="#">Biolab Genéricos</a></li>
+                                <li><a href="#">Saúde Animal</a></li>
+                                <li><a href="#">Programa Saúde em Evolução</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <!-- ============================================================ -->
+                <!-- Item Pesquisa com Submenu Mega -->
+                <!-- ========================================================= -->
+                <li class="dropdown-item">
+                    <div class="dropdown-header">
+                        <a href="">Pesquisa</a>
+                        <button class="seta-dropdown">
+                            <img src="./src/assets/images/setaNavBar.svg" alt="Seta para baixo" />
+                        </button>
+                    </div>
+
+                    <div class="mega-menu">
+                        <div class="mega-menu-col">
+                            <h3>Pesquisa</h3>
+                            <ul>
+                                <li><a href="#">Pesquisa, Desenvolvimento e Inovação</a></li>
+                                <li><a href="#">Inovação</a></li>
+                                <li><a href="#">Estudos Clínicos</a></li>
+                                <li><a href="#">Centros de PD&I</a></li>
+                                <li><a href="#">Desenvolvimento de negócios</a></li>
+                                <li><a href="#">Qualidade</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li>
+                    <a href="https://biolabeco.com.br">Blog Viver Bem</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Botões de ação a direita -->
+        <div class="acoes-usuario">
+            <button class="btn-pesquisa">
+                <img src="./src/assets/images/lupa.svg" alt="Ícone de pesquisa" />
+            </button>
+
+            <div class="dropdown-idioma">
+                <button class="btn-idioma-atual">
+                    <img src="./src/assets/images/brasil.svg" alt="Bandeira do Brasil" />
+                    <img src="./src/assets/images/setaIdioma.svg" alt="Seta para baixo" />
+                </button>
+
+                <ul class="lista-idiomas">
+                    <li>
+                        <a href="#"><img src="./src/assets/images/brasil.svg" alt="" /> Português</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="./src/assets/images/usa.svg" alt="" /> English</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="./src/assets/images/espanha.svg" alt="" /> Español</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- =========================================
+            Seção principal
+     ============================================= -->
+    <main>
+        <!-- ==========================================================
+            Seção 1: Banner fixo do topo com as pessoas e o & luminoso 
+        ================================================================-->
+        <section class="banner-topo">
+            <div class="conteudo-topo"></div>
+        </section>
+        <!-- ==========================================================
+            Seção 2: Carrossel de Imagens em Cartões Lado a Lado 
+        ==============================================================-->
+        <section class="Carrossel">
+            <!-- Janela visível que esconde o que passa das bordas -->
+            <div class="janela-carrossel">
+                <!-- O trilho comprido que o JavaScript vai arrastar para os lados -->
+                <div class="trilho-carrossel">
+                    <!-- Cartão 1: Biolab Farmacêutica -->
+                    <div class="card-slide">
+                        <a href="https://biolabeco.com.br" target="_blank">
+                            <img src="/Projeto-Biolab/src/assets/images/slideFARMACEUTICA.svg" alt="Biolab Farmacêutica" />
+                        </a>
+                    </div>
+
+                    <!-- Cartão 2: Biolab Genéricos -->
+                    <div class="card-slide">
+                        <a href="https://biolabeco.com.br" target="_blank">
+                            <img src="/Projeto-Biolab/src/assets/images/slideGENERICOS.svg" alt="Biolab Genéricos" />
+                        </a>
+                    </div>
+
+                    <!-- Cartão 3: Pet Nutrition -->
+                    <div class="card-slide">
+                        <a href="https://avertsaudeanimal.com.br" target="_blank">
+                            <img src="./src/assets/images/slidePetNutrition.svg" alt="Biolab Pet Nutrition" />
+                        </a>
+                    </div>
+
+                    <!-- Cartão 4: Avert Saúde Animal -->
+                    <div class="card-slide">
+                        <a href="https://biolabeco.com.br" target="_blank">
+                            <img src="./src/assets/images/slideAvertSaudeAnimal.svg" alt="Avert Saúde Animal" />
+                        </a>
+                    </div>
+
+                    <!-- Cartão 5: Avert Farma -->
+                    <div class="card-slide">
+                        <a href="https://biolabeco.com.bravert-saude-humana/" target="_blank">
+                            <img src="./src/assets/images/slideAvertSaudeHumana.svg" alt="Avert Saúde Humana" />
+                        </a>
+                    </div>
+
+                    <!-- Cartão 6: Exzell -->
+                    <div class="card-slide">
+                        <a href="https://biolabeco.com.br" target="_blank">
+                            <img src="./src/assets/images/slideEXZELL.svg" alt="Exzell" />
+                        </a>
+                    </div>
+
+                    <!-- Cartão 7: Gente & Gestão -->
+                    <div class="card-slide">
+                        <a href="https://biolabeco.com.br" target="_blank">
+                            <img src="./src/assets/images/slideGenteEGestao.svg" alt="Gente & Gestão" />
+                        </a>
+                    </div>
+
+                    <!-- Cartão 8: Acessibilidade -->
+                    <div class="card-slide">
+                        <a href="https://windows.net" target="_blank">
+                            <img src="./src/assets/images/slideAcessibilidade.svg" alt="Acessibilidade" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões das setas laterais de navegação -->
+            <button class="seta-carrossel seta-esquerda" id="btn-anterior">
+                <img src="./src/assets/images/setaSlideDireito.svg" alt="Slide Anterior" />
+            </button>
+            <button class="seta-carrossel seta-direita" id="btn-proximo">
+                <img src="./src/assets/images/setaSlideDireito.svg" alt="Próximo Slide" />
+            </button>
+        </section>
+
+        <!-- ==========================================================
+            Seção 3: PDI 
+        =============================================================-->
+        <section class="PDI">
+            <!-- Caixa da Imagem (Esquerda) -->
+            <div class="image-pdi">
+                <a href="https://www.biolabeco.com.br/pesquisa-desenvolvimento/" target="_blank">
+                    <img src="./src/assets/images/pdi.svg" alt="Imagem PDI" />
+                </a>
+            </div>
+
+            <!-- Caixa de Conteúdo (Direita) -->
+            <div class="PDI-conteudo">
+                <h1>Ciência que transforma o futuro da saúde</h1>
+                <p>
+                    Na Biolab&Co, inovação guia cada avanço.<br />
+                    Integramos pesquisa, tecnologia e produção em um único
+                    ecossistema.<br />
+                    Atuamos em saúde humana, animal e nutrição com soluções de alto
+                    impacto.<br />
+                    Nossa presença internacional impulsiona novas descobertas e
+                    oportunidades.<br />
+                    Construímos hoje as bases para o futuro da saúde.
+                </p>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+            Seção 4: ESG
+        =============================================================-->
+        <section class="ESG">
+            <!-- Bloco 1: Título Centralizado -->
+            <div class="titulo-ESG">
+                <h1>ESG e <span>Sustentabilidade</span></h1>
+            </div>
+
+            <!-- Bloco 2: Texto Centralizado com Quebras -->
+            <div class="conteudo-ESG">
+                <p>
+                    Na Biolab acreditamos que inovação e responsabilidade caminham
+                    juntas.<br />
+                    Nosso compromisso com ESG está presente em cada etapa das nossas
+                    operações,<br />
+                    promovendo práticas sustentáveis, responsabilidade social<br />
+                    e uma governança ética e transparente.<br />
+                    Trabalhamos continuamente para reduzir impactos ambientais,
+                    fortalecer relações humanas<br />
+                    e contribuir para um futuro mais saudável, sustentável e inovador
+                    para a sociedade e para o planeta.
+                </p>
+            </div>
+
+            <!-- Bloco 3: Os 3 Cartões Grandes Lado a Lado -->
+            <div class="container-botoes-ESG">
+                <!-- Cartão 1: Ambiental -->
+                <a href="https://www.biolabeco.com.br/esg-sustentabilidade/gestao-ambiental/" target="_blank"
+                    class="card-pilar">
+                    <img src="./src/assets/images/iconMundo.svg" alt="Ícone Ambiental" class="icone-pilar" />
+                    <div class="textos-pilar">
+                        <span class="titulo-pilar">Pilar <span class="color-pilar">Ambiental</span></span>
+                        <span class="subtitulo-pilar">(Environmental)</span>
+                    </div>
+                    <img src="./src/assets/images/setaESG.svg" alt="Seta" class="seta-pilar" />
+                </a>
+
+                <!-- Cartão 2: Social -->
+                <a href="https://www.biolabeco.com.br/esg-sustentabilidade/pilar-social/" target="_blank"
+                    class="card-pilar">
+                    <img src="./src/assets/images/iconMao.svg" alt="Ícone Social" class="icone-pilar" />
+                    <div class="textos-pilar">
+                        <span class="titulo-pilar">Pilar <span class="color-pilar">Social</span></span>
+                        <span class="subtitulo-pilar">(Social)</span>
+                    </div>
+                    <img src="./src/assets/images/setaESG.svg" alt="Seta" class="seta-pilar" />
+                </a>
+
+                <!-- Cartão 3: Governança -->
+                <a href="https://www.biolabeco.com.br/esg-sustentabilidade/pilar-governanca/" target="_blank"
+                    class="card-pilar">
+                    <img src="./src/assets/images/iconCasa.svg" alt="Ícone Governança" class="icone-pilar" />
+                    <div class="textos-pilar">
+                        <span class="titulo-pilar">Pilar <span class="color-pilar">Governança</span></span>
+                        <span class="subtitulo-pilar">(Governance)</span>
+                    </div>
+                    <img src="./src/assets/images/setaESG.svg" alt="Seta" class="seta-pilar" />
+                </a>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+            Seção 5: Notícias
+        =============================================================-->
+        <section class="BiolabNews">
+            <div class="container-noticias">
+
+                <!-- A grande caixa que segura a foto de notebook no fundo de tudo -->
+                <div class="image-Noticias">
+                    <img src="./src/assets/images/noticias.svg" alt="Imagem Notícias" />
+
+                    <!-- A CAIXA BRANCA: Agora ela fica dentro da imagem para flutuar por cima no canto direito -->
+                    <div class="Noticias-conteudo">
+                        <h1>Últimas notícias</h1>
+
+                        <!-- Bloco da Notícia 1 -->
+                        <div class="bloco-noticia">
+                            <h3>Ética em Evolução: Biolab & Co. é Empresa Limpa – pela Integridade e Contra a Corrupção
+                            </h3>
+                            <time class="data-noticia">06/05/2026</time>
+                        </div>
+
+                        <!-- Bloco da Notícia 2 -->
+                        <div class="bloco-noticia">
+                            <h3>Biolab lança marca Biolab & Co. para consolidar ecossistema e acelerar expansão global
+                            </h3>
+                            <time class="data-noticia">22/04/2026</time>
+                        </div>
+
+                        <!-- Botão de Ação Ver Todas (Igual ao da sua foto) -->
+                        <a href="https://www.biolabeco.com.br/imprensa/" target="_blank" class="btn-noticias">Ver
+                            todas</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================
+         Seção 6: FeedBack (Carrossel de Depoimentos)
+         =============================================================-->
+        <section class="FeedBack">
+            <!-- A pílula arredondada do topo -->
+            <div class="tag-feedback">
+                <img src="./src/assets/images/feedback.svg" alt="Balão de feedback" />
+                <span>FEEDBACK</span>
+            </div>
+
+            <!-- Janela visível que corta o conteúdo excedente nas laterais -->
+            <div class="janela-feedback">
+                <!-- O trilho horizontal que carrega todos os cartões alinhados -->
+                <div class="trilho-feedback" id="trilho-feedback">
+
+                    <!-- Cartão 1 -->
+                    <div class="card-feedback">
+                        <span class="aspas-feedback">“</span>
+                        <div class="estrelas-feedback">★★★★</div>
+                        <p class="texto-feedback">"Os padrões de qualidade da Biolab&Co superaram nossas expectativas
+                            desde o
+                            primeiro contato."</p>
+                        <div class="usuario-feedback">
+                            <div class="avatar-feedback"></div>
+                            <div class="info-usuario-feedback">
+                                <span class="nome-feedback">fulano de tal jojo todinho</span>
+                                <span class="cargo-feedback">cargo, empresa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão 2 -->
+                    <div class="card-feedback">
+                        <span class="aspas-feedback">“</span>
+                        <div class="estrelas-feedback">★★★★</div>
+                        <p class="texto-feedback">"A qualidade dos produtos superou nossas expectativas. A Biolab&Co é
+                            sinônimo
+                            de confiança e profissionalismo."</p>
+                        <div class="usuario-feedback">
+                            <div class="avatar-feedback"></div>
+                            <div class="info-usuario-feedback">
+                                <span class="nome-feedback">fulano de tal</span>
+                                <span class="cargo-feedback">cargo, empresa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão 3 -->
+                    <div class="card-feedback">
+                        <span class="aspas-feedback">“</span>
+                        <div class="estrelas-feedback">★★★★</div>
+                        <p class="texto-feedback">"Os padrões de qualidade da Biolab&Co superaram nossas expectativas
+                            desde o
+                            primeiro contato."</p>
+                        <div class="usuario-feedback">
+                            <div class="avatar-feedback"></div>
+                            <div class="info-usuario-feedback">
+                                <span class="nome-feedback">fulano de tal</span>
+                                <span class="cargo-feedback">cargo, empresa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão 4 -->
+                    <div class="card-feedback">
+                        <span class="aspas-feedback">“</span>
+                        <div class="estrelas-feedback">★★★★★</div>
+                        <p class="texto-feedback">"O suporte técnico e o cumprimento rigoroso dos prazos transformaram
+                            de forma
+                            positiva a nossa operação logística."</p>
+                        <div class="usuario-feedback">
+                            <div class="avatar-feedback"></div>
+                            <div class="info-usuario-feedback">
+                                <span class="nome-feedback">Ciclana de Souza</span>
+                                <span class="cargo-feedback">Diretora de Operações, TechMed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão 5 -->
+                    <div class="card-feedback">
+                        <span class="aspas-feedback">“</span>
+                        <div class="estrelas-feedback">★★★★★</div>
+                        <p class="texto-feedback">"A inovação constante trazida pela Biolab&Co otimizou nossos processos
+                            laboratoriais em mais de trinta por cento."</p>
+                        <div class="usuario-feedback">
+                            <div class="avatar-feedback"></div>
+                            <div class="info-usuario-feedback">
+                                <span class="nome-feedback">Beltrano Alencar</span>
+                                <span class="cargo-feedback">Coordenador Geral, LabVida</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão 6 -->
+                    <div class="card-feedback">
+                        <span class="aspas-feedback">“</span>
+                        <div class="estrelas-feedback">★★★★</div>
+                        <p class="texto-feedback">"Encontramos na Biolab&Co um parceiro estratégico fundamental para
+                            manter os
+                            nossos padrões de segurança elevados."</p>
+                        <div class="usuario-feedback">
+                            <div class="avatar-feedback"></div>
+                            <div class="info-usuario-feedback">
+                                <span class="nome-feedback">Mariana Costa</span>
+                                <span class="cargo-feedback">Gestora de Qualidade, BioSaúde</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Botões das setas laterais de navegação -->
+            <button class="seta-feedback seta-esquerda-feedback" id="btn-anterior-feedback">
+                <img src="./src/assets/images/setaSlideDireito.svg" alt="Slide Anterior" />
+            </button>
+            <button class="seta-feedback seta-direita-feedback" id="btn-proximo-feedback">
+                <img src="./src/assets/images/setaSlideDireito.svg" alt="Próximo Slide" />
+            </button>
+        </section>
+
+
+        <!-- ==========================================================
+            Seção 7: Localização
+        =============================================================-->
+        <section class="Localizacao">
+
+            <!-- Bloco Superior: Títulos da Seção -->
+            <div class="conteudo-localizacao">
+                <h1>Onde a Biolab <span>está presente</span></h1>
+                <p>
+                    Do <span>Brasil ao Canadá,</span> nossas unidades impulsionam inovação, produção e desenvolvimento
+                    farmacêutico.
+                </p>
+            </div>
+
+            <!-- Bloco Inferior: Mapa Lado a Lado com os Botões -->
+            <div class="container-abas-mapa">
+
+                <!-- Coluna da Esquerda: A Imagem Dinâmica do Globo -->
+                <div class="planeta-imagem">
+                    <!-- O JavaScript vai mudar o arquivo deste 'src' quando você clicar nas regiões -->
+                    <img id="globo-dinamico" src="./src/assets/images/globoSP.svg" alt="Imagem do Planeta" />
+                </div>
+
+                <!-- Coluna da Direita: Abas e Botões das Unidades -->
+                <div class="gerenciador-localidades">
+
+                    <!-- Linha com os links de escolha de região (Abas) -->
+                    <div class="abas-regioes">
+                        <a href="#saopaulo" class="aba-link active" data-regiao="sp">São Paulo</a>
+                        <a href="#minasgerais" class="aba-link" data-regiao="mg">Minas Gerais</a>
+                        <a href="#canada" class="aba-link" data-regiao="ca">Canadá</a>
+                    </div>
+
+                    <!-- /* ==========================================
+                        CONTEÚDO DE CADA REGIÃO (BOTÕES)
+                        ========================================== */ -->
+
+                    <!-- Bloco de São Paulo (Começa visível por padrão usando 'active') -->
+                    <div class="bloco-unidades active" id="sp">
+                        <button class="btn-localização" data-unidade="jandira">
+                            <img src="./src/assets/images/localizacao.svg">
+                            Unidade Fabril Jandira
+                        </button>
+                        <button class="btn-localização" data-unidade="taboao">
+                            <img src="./src/assets/images/localizacao.svg">
+                            Unidade Fabril Taboão da Serra
+                        </button>
+                        <button class="btn-localização" data-unidade="braganca">
+                            <img src="./src/assets/images/localizacao.svg">
+                            Unidade Fabril Bragança Paulista
+                        </button>
+                        <button class="btn-localização" data-unidade="admin">
+                            <img src="./src/assets/images/localizacao.svg">
+                            Centro Administrativo
+                        </button>
+                        <button class="btn-localização" data-unidade="pdi">
+                            <img src="./src/assets/images/localizacao.svg">
+                            Centro de PD&I
+                        </button>
+                        <button class="btn-localização" data-unidade="ti">
+                            <img src="./src/assets/images/localizacao.svg">
+                            Centro de TI
+                        </button>
+                    </div>
+
+                    <!-- Bloco de Minas Gerais (Começa escondido) -->
+                    <div class="bloco-unidades" id="mg">
+                        <button class="btn-localização" data-unidade="pousoalegre">
+                            <img src="./src/assets/images/localizacao.svg">
+                            Centro Logístico e Unidade Fabril Pouso Alegre
+                        </button>
+                    </div>
+
+                    <!-- Bloco do Canadá (Começa escondido) -->
+                    <div class="bloco-unidades" id="ca">
+                        <button class="btn-localização" data-unidade="canada-pdi">
+                            <img src="./src/assets/images/localizacao.svg">
+                            Biolab Pharma PD&I
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- /* ==========================================
+                CAIXINHA FLUTUANTE DE DETALHES (MODAL)
+                ========================================== */ -->
+            <!-- Esta caixa inteira fica invisível e só brota na tela quando um botão é clicado -->
+            <div class="fundo-escuro-detalhes" id="janela-detalhes">
+                <div class="card-detalhes">
+                    <!-- Botão de fechar (O X do topo) -->
+                    <button class="fechar-x" id="btn-fechar-x">&times;</button>
+
+                    <!-- Informações textuais da Fábrica -->
+                    <div class="cabecalho-detalhes">
+                        <span class="tipo-unidade">UNIDADE FABRIL</span>
+                        <h2 id="nome-fabrica">Jandira (SP)</h2>
+                        <p id="endereco-fabrica">Rua Antônio Madeira, 328 - Jandira - SP | CEP 06612-030</p>
+                    </div>
+
+                    <!-- Imagem Real da Fábrica -->
+                    <div class="foto-detalhes">
+                        <img id="imagem-fabrica" src="./src/assets/images/slideFARMACEUTICA.svg" alt="Foto da Unidade" />
+                    </div>
+
+                    <!-- Botões de ação da base -->
+                    <div class="botoes-detalhes">
+                        <a href="#" target="_blank" class="btn-conhecer">Conhecer unidade &rarr;</a>
+                        <button class="btn-fechar-texto" id="btn-fechar-texto">Fechar</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="./src/javaScript/slides.js"></script>
+    <script src="./src/javaScript/localização.js"></script>
+    <script src="./src/javaScript/feedback.js"></script>
+
+    <!-- Rodapé da página -->
+    <footer class="rodape">
+        <img class="logo-topo" src="./src/assets/images/biolabECo.svg" alt="Biolab & Co" />
+        <div class="conteudo-rodape">
+            <div class="conteudo-esquerdo">
+                <h1>Contato</h1>
+                <p>E-mail</p>
+                <a href="mailto:faleconosco@biolabfarma.com.br">faleconosco@biolabfarma.com.br</a>
+                <p>Assessoria de Imprensa</p>
+                <a href="mailto:imprensa@textoassessoria.com.br">imprensa@textoassessoria.com.br</a>
+                <p>SAC</p>
+                <a href="tel:08007246522">0800 724 6522</a>
+                <p>Ouvidoria</p>
+                <a href="tel:08008108512">0800 810 8512</a>
+                <a href="http://contatoseguro.com.br/biolab">http://contatoseguro.com.br/biolab</a>
+                <a href="duvidas.compliance@biolabfarma.com.br">duvidas.compliance@biolabfarma.com.br</a>
+                <a href="https://biolabemcasa.com.br/?utm_source=Site+Institucional&utm_medium=Logo&utm_campaign=Site_Biolab_em_Casa_Institucional"
+                    target="_blank">
+                    <img src="./src/assets/images/biolabEmCasa.svg">
+                </a>
+            </div>
+            <div class="conteudo-direito">
+                <h1>Links Úteis</h1>
+                <a href="https://www.biolabeco.com.br/faq/">FAQ</a>
+                <a href="https://www.biolabeco.com.br/contato/solicitacao-de-visitas/">Formulário de Visita e
+                    Representação de Vendas</a>
+                <a href="https://www.biolabeco.com.br/contato/farmacovigilancia/">Farmacovigilância</a>
+                <a href="https://www.biolabeco.com.br/pessoas/">Pessoas</a>
+                <a href="https://www.biolabeco.com.br/politica-de-privacidade/">Política de Privacidade</a>
+                <a href="https://www.biolabstudio.com.br/pt/studio/home" target="_blank">
+                    <img src="./src/assets/images/biolabStudio.svg">
+                </a>
+            </div>
+        </div>
+        <div class="sociais-rodape">
+            <img src="./src/assets/images/iconFacebook.svg" alt="Facebook" />
+            <img src="./src/assets/images/iconInstagram.svg" alt="Instagram" />
+            <img src="./src/assets/images/iconLikedln.svg" alt="Linkedin" />
+            <img src="./src/assets/images/iconYoutube.svg" alt="Youtube" />
+            <img src="./src/assets/images/iconTiktok.svg" alt="Tiktok" />
+        </div>
+        <p class="direitoAutorais"> Direitos Reservados &copy; 2026 Biolab & Co. </p>
+    </footer>
+</body>
+
+</html>

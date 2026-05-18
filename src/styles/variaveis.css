@@ -1,0 +1,75 @@
+:root {
+  /* Seção Principal/Hero e NavBar */
+  --font-text-navBar: "Roboto";
+  --font-size-navBar: 20px;
+  --font-weight-navBar: 350;
+  --text-color-navBar: #ffffff;
+  --text-color-submenu: #006cec; /* Azul vibrante para os itens da NavBar */
+  --text-color-idiomas: #ffffff;
+  --background-color-navBar: transparent;
+  --background-color: #011336;
+
+  /* Seção PDI */
+  --font-text-pdi: "Roboto";
+  --font-size-pdi: 18px;
+  --font-size-title-pdi: 30px;
+  --font-weight-pdi: 300;
+  --font-weight-title-pdi: 500;
+  --text-color-title-pdi: #006cec;
+  --text-color-texto-pdi: #191919;
+  --background-color-pdi: #f3f3fa;
+
+  /* Seção ESG */
+  --font-text-esg: "Roboto";
+  --font-size-esg: 18px;
+  --font-size-title-esg: 30px;
+  --font-weight-esg: 300;
+  --font-weight-title-esg: 500;
+  --text-color-title-esg: #ffffff;
+  --text-color-title-span-esg: #006cec;
+  --text-color-texto-esg: #ffffff;
+  --text-color-texto-subtitulo-esg: #006cec;
+  --text-color-texto-span-pilar-esg: #629721;
+  --background-esg: #000b21;
+  --background-button-esg: #000b21;
+
+  /* Seção BiolabNews */
+
+  --font-text-BiolabNews: "Roboto";
+  --font-size-BiolabNews: 18px;
+  --font-size-title-BiolabNews: 30px;
+  --font-weight-BiolabNews: 300;
+  --font-weight-title-BiolabNews: 500;
+  --text-color-title-BiolabNews: #006cec;
+  --text-color-h3-BiolabNews: #ffffff;
+  --text-color-title-span-BiolabNews: #006cec;
+  --text-color-title-time-BiolabNews: #006cec;
+  --background-conteudo: #000b21; 
+  --background-BiolabNews: #f3f3fa; 
+
+  /* Seção FeedBack */
+  --font-text-feedback: "Roboto";
+  --text-color-tag-feedback: #006cec;
+  --background-color-card-feedback: #2b426f; /* Tom azul acinzentado das caixas */
+  --background-section-feedback: #f3f3fa; /* Fundo salmão bem clarinho da seção */
+
+  /* Seção Localização */
+  --font-text-localizacao: "Roboto";
+  --font-size-localizacao: 18px;
+  --font-size-title-localizacao: 30px;
+  --font-weight-localizacao: 300;
+  --font-weight-title-localizacao: 500;
+  --text-color-title--localizacao: #000000;
+  --text-color-title-span-localizacao: #006cec;
+  --text-color-texto-localizacao: #292828;
+  --background-color-localizacao: #f3f3fa;
+
+  /* Seção Rodapé (Footer) */
+  --font-text-rodape: "Roboto", sans-serif;
+  --background-color-rodape: #000b21; /* Azul escuro idêntico ao fundo da imagem */
+  --text-color-title-rodape: #5da4e6; /* Azul claro brilhante das manchetes */
+  --text-color-sub-rodape: #a3b3cc; /* Cinza claro para as etiquetas fixas como SAC e E-mail */
+  --text-color-links-rodape: #ffffff; /* Branco para os links clicáveis */
+  --background-footer: #000b21;
+
+}

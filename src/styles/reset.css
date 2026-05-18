@@ -1,0 +1,20 @@
+*{
+    padding:0;/*Define tamanho interno de um elemento*/
+    margin:0;/*Define margem*/
+    border:0;/*Define borda*/
+    box-sizing: border-box;/*Define redimensionamento*/
+    text-decoration: none;/*Define decoração do texto*/
+    list-style: none;/*Define estilo da lista, bolinha ou numero*/
+}
+
+button{
+    background: none;/*Define fundo do botão*/
+    border: none;/*Define borda do botão*/
+    cursor: pointer;/*Garante que o cursor mude para a forma de mão ao passar sobre o botão*/
+    font: inherit;/*Garante que o botão herde a fonte do elemento pai*/
+}
+img{
+    display: block;/*Define a imagem como um bloco, eliminando o espaço em branco abaixo dela*/
+    max-width: 100%;/*Garante que a imagem não ultrapasse a largura do seu contêiner pai*/
+    height: auto;/*Mantém a proporção da imagem ao redimensioná-la*/
+}

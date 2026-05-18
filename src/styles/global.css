@@ -1,0 +1,1385 @@
+/* ==========================================================================
+   1. CONEXÃO DOS ARQUIVOS (CONFIGURAÇÕES GERAIS)
+   ========================================================================== */
+@import "variaveis.css";
+@import "reset.css";
+/* ==========================================================================
+   2. A BARRA DO TOPO (NAVBAR COM EFEITO BLUR)
+   ========================================================================== */
+.NavBar {
+  display: flex; /* Coloca logo, menu e idiomas lado a lado */
+  justify-content: space-between; /* Empurra os blocos para as pontas da barra */
+  align-items: center; /* Alinha todos os itens na mesma altura */
+  padding: 0 60px; /* ALTERADO: Removemos o padding vertical daqui para os links controlarem a altura */
+  height: 90px; /* ALTERADO: Definimos uma altura fixa para a barra manter o visual original */
+
+  position: absolute; /* Fixa a barra por cima da foto de fundo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; /* Garante que a barra fique sempre por cima de tudo */
+
+  /* EFEITO DE VIDRO FOSCO (BLUR) */
+  background-color: rgba(255, 255, 255, 0.02); /* Fundo branco quase invisível */
+  backdrop-filter: blur(2px); /* Embaça o fundo de leve */
+  -webkit-backdrop-filter: blur(2px); /* Suporte para o navegador Safari */
+  border-bottom: 1px solid rgba(0, 55, 255, 0.1); /* Linha fina azul na parte inferior */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Sombra bem leve abaixo da barra */
+}
+
+.logo img {
+  width: 170px; /* Define a largura da imagem do logotipo */
+  height: auto; /* Mantém a proporção correta da altura */
+}
+
+/* ==========================================================================
+   3. OS LINKS DO MEIO (MENU DE NAVEGAÇÃO + LINHA ANIMADA)
+   ========================================================================== */
+.navegacao-principal {
+  position: static; /* Necessário para o submenu abrir na largura inteira da tela */
+  height: 100%; /* ALTERADO: Faz o container do menu ocupar toda a altura da barra */
+}
+
+.navegacao-principal ul {
+  display: flex; /* Coloca os links do menu principal lado a lado */
+  align-items: center; /* Centraliza a altura de todos os links */
+  gap: 57px; /* Espaçamento entre os links do menu */
+  height: 100%; /* ALTERADO: Garante que a lista preencha toda a altura */
+}
+
+.dropdown-item {
+  position: static; /* Necessário para o submenu grande não quebrar */
+  display: flex; /* Alinha o texto e a seta na horizontal */
+  align-items: center;
+  gap: 6px; /* Espaço entre o texto do menu e a seta */
+  height: 100%; /* ALTERADO: Cria uma ponte invisível até o submenu, eliminando o ponto cego */
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%; /* ALTERADO: Garante o contato do mouse em toda a extensão vertical */
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%; /* ALTERADO: Alinha os itens sem submenu na mesma proporção */
+}
+
+.navegacao-principal a {
+  color: var(--text-color-navBar); /* Usa a cor definida no seu arquivo de variáveis */
+  font-family: var(--font-text-navBar); /* Usa a fonte padrão do seu projeto */
+  font-size: var(--font-size-navBar); /* Tamanho do texto */
+  font-weight: var(--font-weight-navBar); /* Grossura da letra */
+  position: relative; /* Necessário para a linha azul se posicionar abaixo */
+  padding-bottom: 6px; /* Espaço para a linha azul não encostar no texto */
+  text-decoration: none; /* Tira o sublinhado padrão de links */
+  transition: opacity 0.2s; /* Deixa o efeito de apagar mais suave */
+}
+
+.navegacao-principal a:hover {
+  opacity: 0.7; /* Deixa o texto um pouco mais claro ao passar o mouse */
+}
+
+/* LINHA AZUL QUE SURGE EMBAIXO DO TEXTO */
+.navegacao-principal a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%; /* Começa com tamanho zero (escondida) */
+  height: 3px; /* Grossura da linha azul */
+  background-color: #007bff; /* Cor da linha azul */
+  transition: width 0.2s ease-in-out; /* Velocidade do efeito da linha crescendo */
+}
+
+.navegacao-principal a:hover::after {
+  width: 100%; /* Faz a linha encher o espaço inteiro ao passar o mouse */
+}
+
+.seta-dropdown img {
+  width: 10px;
+  height: auto;
+  filter: brightness(0) invert(1); /* Deixa o ícone da seta totalmente branco */
+}
+
+/* ==========================================================================
+   3.1. SUBMENU MEGA (ESTILO GLASSMORPHISM)
+   ========================================================================== */
+.mega-menu {
+  display: none; /* Começa escondido */
+  opacity: 0; /* Começa invisível para a animação */
+  pointer-events: none; /* Bloqueia cliques enquanto estiver escondido */
+  position: absolute;
+  top: 100%; /* Fixa a janela exatamente colada no limite inferior da barra */
+  left: 0;
+  width: 100%; /* Ocupa a tela de ponta a ponta */
+  padding: 40px 60px; /* Margem interna do menu grande */
+  box-sizing: border-box; /* Evita que o preenchimento quebre o tamanho do menu */
+  z-index: 99; /* Fica abaixo da barra principal, mas acima do conteúdo do site */
+  
+  display: flex; /* Organiza as colunas de links lado a lado */
+  gap: 80px; /* Espaço entre uma coluna e outra */
+
+  /* Fundo azul translúcido e efeito blur */
+  background-color: rgba(6, 18, 36, 0.9); /* Tom azul bem escuro com transparência */
+  backdrop-filter: blur(20px); /* Força do efeito de vidro embaçado */
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 110, 255, 0.3); /* Linha azul fina na borda de baixo */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); /* Sombra escura para dar profundidade */
+  
+  transition: opacity 0.2s ease; /* Tempo de aparecimento do menu */
+}
+
+.dropdown-item:hover .mega-menu {
+  display: flex; /* Faz o menu existir no layout ao passar o mouse */
+  opacity: 1; /* Torna o menu visível */
+  pointer-events: auto; /* Libera os cliques nos links */
+}
+
+.mega-menu-col {
+  min-width: 200px; /* Define um tamanho mínimo para as colunas não esmagarem */
+}
+
+.mega-menu-col h3 {
+  color: var(--text-color-submenu); /* Azul vibrante para os títulos do submenu */
+  font-family: var(--font-text-navBar);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase; /* Força letras em maiúsculo */
+  margin-bottom: 20px; /* Espaço abaixo do título antes dos links */
+  letter-spacing: 1px; /* Espaçamento entre as letras do título */
+}
+
+.mega-menu-col ul {
+  display: flex;
+  flex-direction: column; /* Coloca a lista de links um embaixo do outro */
+  gap: 14px; /* Espaço entre cada link da lista */
+  align-items: flex-start; /* Alinha os links à esquerda */
+}
+
+.mega-menu-col ul li a {
+  color: #ffffff; /* Links do submenu começam brancos */
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.8; /* Um pouco apagados por padrão */
+  padding-bottom: 0; /* Remove padding desnecessário */
+}
+
+.mega-menu-col ul li a:hover {
+  opacity: 1; /* Fica totalmente nítido ao passar o mouse */
+  color: #007bff; /* Muda a cor para azul ao passar o mouse */
+}
+
+.mega-menu-col ul li a::after {
+  display: none; /* Desativa a linha azul do menu de cima aqui dentro */
+}
+
+/* ==========================================================================
+   4. OS BOTÕES DA DIREITA (LUPA E IDIOMA)
+   ========================================================================== */
+.acoes-usuario {
+  display: flex; /* Coloca o ícone de busca e idioma lado a lado */
+  align-items: center;
+  gap: 25px; /* Distância entre os dois botões */
+  height: 100%; /* ALTERADO: Mantém o alinhamento correto com a nova altura da barra */
+}
+
+.btn-pesquisa img {
+  width: 30px; /* Largura do ícone da lupa */
+  height: auto;
+  filter: brightness(0) invert(1); /* Deixa a lupa branca */
+}
+
+/* ==========================================================================
+   5. O MENU SUSPENSO DA BANDEIRA (IDIOMAS)
+   ========================================================================== */
+.dropdown-idioma {
+  position: relative; /* Define que a caixinha de idiomas vai nascer colada aqui */
+}
+
+.btn-idioma-atual {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-idioma-atual img:first-child {
+  width: 35px; /* Tamanho da bandeira do Brasil */
+}
+
+.btn-idioma-atual img:last-child {
+  width: 8px; /* Tamanho da micro seta do idioma */
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.lista-idiomas {
+  display: none; /* Começa escondido */
+  position: absolute;
+  top: 100%;
+  right: 0; /* Alinha a caixinha na borda direita do botão */
+  background-color: var(--background-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 5px; /* Cantos arredondados na caixinha */
+  padding: 8px 0;
+  min-width: 150px; /* Largura da caixinha de idiomas */
+}
+
+.lista-idiomas li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: var(--text-color-idiomas);
+  font-family: var(--font-text-navBar);
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.lista-idiomas li a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Fundo cinza bem de leve ao passar o mouse */
+}
+
+.dropdown-idioma:hover .lista-idiomas {
+  display: block; /* Abre a caixinha ao passar o mouse */
+}
+
+/* ==========================================================================
+   6. SEÇÃO 1: A FOTO FIXA DO TOPO (BANNER-TOPO)
+   ========================================================================= */
+.banner-topo {
+  width: 100%;
+  height: 100vh; /* Faz a foto de fundo ocupar toda a altura do monitor */
+  background-image: url("../assets/images/Hero.svg"); /* Puxa o arquivo de imagem */
+  background-repeat: no-repeat; /* Evita que a foto fique se repetindo */
+  background-size: cover; /* Estica a imagem para preencher todo o espaço sem distorcer */
+  background-position: center; /* Centraliza o foco da imagem na tela */
+  background-color: var(--background-color);
+  position: relative;
+  display: block;
+}
+
+/* ==========================================================================
+   7. SEÇÃO 2: O CARROSSEL EM FORMATO DE CARTÕES (LADO A LADO)
+   ========================================================================== */
+.Carrossel {
+  width: 100%;
+  height: 350px; /* Altura controlada do carrossel */
+  margin-top: 60px; /* Afasta o carrossel do banner do topo */
+  position: relative;
+  display: block;
+}
+
+/* Moldura invisível que esconde as imagens que saem da tela lateralmente */
+.janela-carrossel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Corta o que passar da largura da tela */
+  padding: 0 100px; /* Abre espaço nas pontas para as setas flutuarem fora da foto */
+}
+
+/* O trilho horizontal que carrega todos os cartões alinhados */
+.trilho-carrossel {
+  display: flex; /* Organiza todos os cartões em uma única linha horizontal */
+  gap: 30px; /* Espaço em branco exato entre um cartão e outro */
+  width: 100%;
+  height: 100%;
+
+  /* Efeito de movimento: faz o trilho deslizar suavemente para os lados ao clicar */
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Configuração de tamanho e bordas de cada cartão individual */
+.card-slide {
+  /* MÁGICA DO CÁLCULO: Diz para cada cartão ocupar metade da tela (50%) descontando metade do gap */
+  flex: 0 0 calc(50% - 15px);
+  height: 100%;
+  border-radius: 25px; /* Cria as bordas arredondadas idênticas às da sua foto */
+  overflow: hidden; /* Obriga a foto de dentro a respeitar o arredondado das pontas */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Cria uma sombra muito suave abaixo do cartão */
+}
+
+.card-slide a,
+.card-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz a imagem preencher o cartão arredondado sem distorcer */
+}
+
+/* ==========================================================================
+   8. ESTILIZAÇÃO DAS SETAS LATERAIS DO CARROSSEL
+   ========================================================================== */
+.seta-carrossel {
+  position: absolute;
+  top: 50%; /* Posiciona as setas bem no meio da altura do slide */
+  transform: translateY(-50%);
+  z-index: 10; /* Mantém os botões na camada da frente */
+
+  /* Seu novo formato retangular personalizado */
+  width: 40px;
+  height: 50px;
+  border-radius: 15%;
+
+  /* Efeito de vidro fosco */
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.seta-carrossel:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.seta-carrossel img {
+  width: 20px;
+  height: auto;
+  filter: brightness(0) invert(1); /* Pinta as setinhas internas de branco */
+  pointer-events: none; /* Faz o clique atravessar a imagem e acertar o botão */
+}
+
+.seta-esquerda {
+  left: 40px; /* Distância da seta de voltar em relação à borda esquerda */
+}
+
+.seta-esquerda img {
+  transform: scaleX(
+    -1
+  ); /* Inverte o desenho da seta para apontar para a esquerda */
+}
+
+.seta-direita {
+  right: 40px; /* Distância da seta de avançar em relação à borda direita */
+}
+
+/* ==========================================================================
+   9. Configuração da Seção 3 (PDI) 
+   ========================================================================== */
+.PDI {
+  display: flex; /* Coloca a imagem e o bloco de texto lado a lado */
+  align-items: center; /* Alinha os dois blocos bem no meio da altura vertical */
+  justify-content: center; /* Centraliza o conjunto inteiro na tela */
+  gap: 80px; /* Abre o vão perfeito de espaço entre a foto e o texto */
+  padding: 100px 60px; /* Espaço para a seção respirar em cima, embaixo e nas pontas */
+  background-color: var(
+    --background-color-pdi
+  ); /* Puxa o fundo cinza claro #f3f3fa */
+}
+
+/* Controla o tamanho da imagem geométrica para ela não quebrar o alinhamento */
+.image-pdi img {
+  width: 100%;
+  max-width: 450px; /* Limita a largura da foto para dar equilíbrio visual */
+  height: auto;
+  display: block;
+}
+
+/* Caixa geral que segura todos os textos da direita */
+.PDI-conteudo {
+  flex: 1; /* Faz o bloco de texto se adaptar ao espaço que sobrou */
+  max-width: 600px; /* Evita que as linhas de texto fiquem longas demais e cansem os olhos */
+}
+
+/* Configurações exclusivas do Título Principal */
+.PDI-conteudo h1 {
+  color: var(--text-color-title-pdi); /* Puxa o azul oficial #006CEC */
+  font-family: var(--font-text-pdi); /* Roboto */
+  font-size: var(--font-size-title-pdi); /* 30px */
+  font-weight: var(--font-weight-title-pdi); /* 500 */
+  margin-bottom: 25px; /* Empurra o parágrafo para baixo com um espaço fixo e limpo */
+}
+
+/* Configurações exclusivas das frases do Parágrafo */
+.PDI-conteudo p {
+  color: var(--text-color-texto-pdi); /* Puxa o cinza escuro #191919 */
+  font-family: var(--font-text-pdi); /* Roboto */
+  font-size: var(--font-size-pdi); /* 18px */
+  font-weight: var(--font-weight-pdi); /* 300 */
+
+  /* A MÁGICA DO ACABAMENTO: Cria um espaço confortável de respiração entre as linhas 
+     do seu texto para que as frases com <br> não fiquem coladas umas nas outras */
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   10. Configuração da Seção 4 (ESG) 
+   ========================================================================== */
+
+.ESG {
+  display: flex;
+  flex-direction: column; /* Empilha o Título, o Texto e os Botões de cima para baixo */
+  align-items: center; /* Centraliza todos os blocos no meio da tela horizontalmente */
+  justify-content: center;
+  gap: 45px; /* Espaço vertical entre o título, texto e botões */
+  padding: 100px 60px;
+  background: var(--background-esg);
+}
+
+/* Configurações do Título */
+.titulo-ESG h1 {
+  color: var(--text-color-title-esg); /* Branco */
+  font-family: var(--font-text-esg); /* Roboto */
+  font-size: var(--font-size-title-esg); /* 30px */
+  font-weight: var(--font-weight-title-esg);
+  text-align: center;
+}
+
+.titulo-ESG span {
+  color: var(--text-color-title-span-esg); /* Puxa o seu azul oficial #006CEC */
+}
+
+/* Bloco do Parágrafo Explicativo */
+.conteudo-ESG p {
+  color: var(--text-color-texto-esg); /* Branco */
+  font-family: var(--font-text-esg);
+  font-size: var(--font-size-esg); /* 18px */
+  font-weight: var(--font-weight-esg);
+  text-align: center; /* Centraliza as linhas de texto igual à foto */
+  line-height: 1.6; /* Dá um espaço confortável de leitura entre as frases */
+  max-width: 950px; /* Impede o parágrafo de esticar demais pros lados */
+}
+
+/* Linha horizontal que segura as três caixinhas de pilares */
+.container-botoes-ESG {
+  display: flex; /* Coloca as 3 caixas lado a lado em linha */
+  justify-content: center;
+  gap: 90px; /* Espaço horizontal entre uma caixa e outra */
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 20px; /* Afasta os botões em relação ao texto de cima */
+}
+
+/* Estilização de cada uma das 3 caixas arredondadas (Pilares) */
+.card-pilar {
+  display: flex; /* Alinha o ícone, o texto e a seta interna em linha horizontal */
+  align-items: center; /* Centraliza todos os itens de dentro na mesma altura */
+  justify-content: space-between; /* Empurra o ícone pra esquerda e a seta pra direita */
+  background: var(--background-button-esg); /* Fundo azul escuro dos botões */
+  border: 1px solid #434a5837; /* Borda sutil de contorno */
+  padding: 15px 25px;
+  gap: 7px;
+  border-radius: 50px; /* Deixa as caixas totalmente arredondadas (formato pílula) */
+  min-width: 250px; /* Largura mínima para as caixas ficarem do mesmo tamanho */
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+/* Efeito ao passar o mouse nas caixinhas */
+.card-pilar:hover {
+  background-color: rgba(255, 255, 255, 0.08); /* Clareia o fundo de leve */
+  transform: translateY(-3px); /* Dá um leve pulinho para cima */
+}
+
+/* Ícones redondos grandes da esquerda */
+.icone-pilar {
+  width: 45px;
+  height: auto;
+}
+
+/* Caixinha que segura o título e o subtitulo empilhados */
+.textos-pilar {
+  display: flex;
+  flex-direction: column; /* Coloca o subtitulo embaixo do nome do Pilar */
+  gap: 4px;
+  flex: 1;
+  padding-left: 15px; /* Afasta o texto do ícone da esquerda */
+}
+
+.color-pilar {
+  color: var(--text-color-texto-span-pilar-esg);
+}
+
+.titulo-pilar {
+  color: #ffffff;
+  font-family: var(--font-text-esg);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Estilo do subtítulo de tradução (embaixo) */
+.subtitulo-pilar {
+  color: var(--text-color-texto-subtitulo-esg); /* azul claro #006CEC */
+  font-family: var(--font-text-esg);
+  font-size: 13px;
+}
+
+/* Seta azul de clique da ponta direita */
+.seta-pilar {
+  width: 20px;
+  height: auto;
+}
+/* ==========================================================================
+   11. Configuração da Seção 5 (BiolabNews) 
+   ========================================================================== */
+
+.BiolabNews {
+  width: 100%;
+  padding: 60px 0; /* Espaço para afastar a seção das outras de cima e baixo */
+  background: var(--background-BiolabNews); 
+  display: block;
+}
+
+/* Moldura que agora ocupa toda a largura horizontal da tela */
+.container-noticias {
+  width: 100%; /* Faz o bloco ocupar a largura total do monitor */
+  margin: 0; /* Remove as travas de centralização antigas */
+  padding: 0; /* Zera as paredes invisíveis para a foto encostar na ponta */
+}
+
+/* A GRANDE CAIXA DA FOTO (MÃE): Agora cobre 100% da largura da tela */
+.image-Noticias {
+  width: 100%; /* Faz a imagem ir de uma ponta a outra da tela */
+  height: 550px; /* Aumentamos um pouco a altura para valorizar a imagem */
+  position: relative; /* OBRIGATÓRIO: Permite que a caixinha branca flutue aqui dentro */
+  overflow: hidden;
+}
+
+/* Faz a foto do notebook preencher todo o fundo */
+.image-Noticias img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Espalha a foto do notebook sem achatar o desenho */
+  display: block;
+}
+
+/* A CAIXA BRANCA FLUTUANTE (FILHA): Posicionada estrategicamente na metade direita */
+.Noticias-conteudo {
+  position: absolute; /* Solta a caixa no espaço para flutuar sobre a foto */
+  top: 0;
+  right: 0; /* Cola a caixa branca na parede extrema direita do monitor */
+  width: 45%; /* Ocupa um pouco menos da metade (45%) para a foto na esquerda aparecer mais */
+  height: 100%; /* Ocupa toda a altura da foto de cima a baixo */
+  background-color: var(--background-conteudo);
+  padding: 50px 80px 50px 60px; /* Espaço extra na direita para o texto não colar na borda do monitor */
+  display: flex;
+  flex-direction: column; /* Empilha as notícias de cima para baixo */
+  justify-content: center; /* Centraliza as notícias verticalmente dentro do bloco */
+
+  /* EFEITO DE CORTE: Arredonda generosamente apenas o lado esquerdo que encosta na foto */
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1); /* Sombra mais marcada para destacar o corte na foto */
+}
+
+/* Estilo do Título Principal (Últimas notícias) */
+.Noticias-conteudo h1 {
+  color: var(--text-color-title-BiolabNews); 
+  font-family: var(--font-text-BiolabNews);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* Espaçamento entre cada bloco de notícia */
+.bloco-noticia {
+  margin-bottom: 25px; /* Afasta uma notícia da outra */
+  width: 100%;
+}
+
+/* Estilo do título/manchete de cada notícia */
+.bloco-noticia h3 {
+  color: var(--text-color-h3-BiolabNews); 
+  font-family: var(--font-text-BiolabNews);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.bloco-noticia h3:hover {
+  color: #006cec; /* A notícia acende em azul ao passar o mouse */
+}
+
+/* Estilo do texto da data */
+.data-noticia {
+  display: block;
+  color: #00baec; /* Azul piscina claro */
+  font-family: var(--font-text-BiolabNews);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Estilização do Botão Azul (Ver Todas) */
+.btn-noticias {
+  display: inline-block;
+  padding: 12px 35px;
+  background-color: #13a2ba; /* Tom azul turquesa */
+  color: #ffffff;
+  font-family: var(--font-text-BiolabNews);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  margin-top: 15px;
+  align-self: flex-start; /* Garante que o botão não estique para os lados */
+  transition: background-color 0.2s;
+}
+
+.btn-noticias:hover {
+  background-color: #0d7c90;
+}
+
+/* ==========================================================================
+   12. CONFIGURAÇÃO DA SEÇÃO 7 (LOCALIZAÇÃO)
+   ========================================================================== */
+
+.Localizacao {
+  width: 100%;
+  background-color: var(
+    --background-color-localizacao
+  ); /* Puxa o cinza claro #f3f3fa */
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column; /* Empilha os títulos no topo e o mapa embaixo */
+  gap: 50px; /* Espaço vertical de separação */
+}
+
+/* Bloco dos Títulos Superiores */
+.conteudo-localizacao {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.conteudo-localizacao h1 {
+  font-family: var(--font-text-localizacao);
+  font-size: var(--font-size-title-localizacao); /* 30px */
+  font-weight: var(--font-weight-title-localizacao); /* 500 */
+  color: var(--text-color-title--localizacao); /* Preto */
+  margin-bottom: 15px;
+}
+
+.conteudo-localizacao h1 span {
+  color: var(--text-color-title-span-localizacao); /* Azul oficial #006cec */
+}
+
+.conteudo-localizacao p {
+  font-family: var(--font-text-localizacao);
+  font-size: var(--font-size-localizacao); /* 18px */
+  font-weight: var(--font-weight-localizacao); /* 300 */
+  color: var(--text-color-texto-localizacao); /* Cinza escuro */
+}
+
+.conteudo-localizacao p span {
+  color: var(
+    --text-color-title-span-localizacao
+  ); /* Deixa as palavras 'Brasil ao Canadá' em azul */
+  font-weight: 500;
+}
+
+/* ==========================================
+   MOLDURA DO MAPA E ABAS (LADO A LADO)
+   ========================================== */
+.container-abas-mapa {
+  display: flex; /* Coloca a foto do planeta na esquerda e os links na direita */
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 80px; /* Espaço padrão entre o globo e as listas */
+}
+
+/* Caixa da imagem do Globo da esquerda */
+.planeta-imagem {
+  flex: 1;
+  max-width: 500px;
+}
+
+.planeta-imagem img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caixa geral que gerencia as listas da direita */
+.gerenciador-localidades {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column; /* Empilha a linha de abas e os blocos de botões abaixo */
+  gap: 30px;
+}
+
+/* Linha horizontal com os nomes das Regiões (São Paulo, Minas, Canadá) */
+.abas-regioes {
+  display: flex;
+  gap: 40px; /* Espaço horizontal entre uma região e outra */
+  border-bottom: 2px solid #e2e8f0; /* Linha cinza horizontal fina de fundo */
+  padding-bottom: 10px;
+}
+
+/* Estilo de cada link de Região */
+.aba-link {
+  font-family: var(--font-text-localizacao);
+  color: #718096; /* Começa em um tom cinza suave (desativado) */
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 10px;
+  transition: color 0.2s;
+}
+
+/* MÁGICA DA ABA: Estilo exclusivo da região que estiver selecionada no momento */
+.aba-link.active {
+  color: var(--text-color-title-span-localizacao); /* Acende em azul oficial */
+}
+
+/* Cria a linha azul fixa embaixo apenas da região selecionada */
+.aba-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Cola a linha azul por cima da linha cinza de fundo */
+  left: 0;
+  width: 100%; /* Ocupa toda a largura da palavra */
+  height: 3px;
+  background-color: var(--text-color-title-span-localizacao);
+}
+
+/* ==========================================
+   BLOCOS DE BOTÕES DE UNIDADES
+   ========================================== */
+
+/* Caixa que segura o grupo de botões de um estado */
+.bloco-unidades {
+  display: none; /* ESCONDE o bloco inteiro de botões por padrão */
+  flex-direction: column; /* Organiza os botões empilhados em lista vertical */
+  gap: 15px; /* Espaço vertical entre um botão e outro */
+}
+
+/* MÁGICA DO BLOCO: Mostra apenas os botões do estado que estiver ativo */
+.bloco-unidades.active {
+  display: flex; /* Transforma em visível na tela */
+}
+
+/* Estilização de cada botão de Unidade (ex: Unidade Fabril Jandira) */
+.btn-localização {
+  display: flex; /* Alinha o ícone do mapa e o texto em linha horizontal */
+  align-items: center; /* Centraliza na mesma altura */
+  gap: 15px; /* Afasta o ícone do texto */
+  background-color: #ffffff; /* Fundo branco limpo */
+  border: 1px solid #e2e8f0; /* Contorno fino cinza */
+  padding: 16px 25px;
+  border-radius: 12px; /* Cantos levemente arredondados */
+  font-family: var(--font-text-localizacao);
+  color: #2d3748; /* Cor do texto escuro confortável */
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+/* Efeito ao passar o mouse por cima do botão da fábrica */
+.btn-localização:hover {
+  background-color: #f7fafc; /* Deixa o fundo cinza bem clarinho */
+  border-color: #cbd5e0; /* Escurece o contorno */
+  transform: translateX(5px); /* Dá um leve empurrãozinho para a direita */
+}
+
+/* Tamanho do ícone azul de mapa dentro do botão */
+.btn-localização img {
+  width: 22px;
+  height: auto;
+}
+
+/* ==========================================
+   A CAIXINHA FLUTUANTE DE DETALHES (MODAL)
+   ========================================== */
+
+/* Cortina escura que cobre o site inteiro no fundo ao abrir os detalhes */
+.fundo-escuro-detalhes {
+  display: none; /* COMEÇA TOTALMENTE INVISÍVEL E SECRETO */
+  position: fixed; /* Prende na tela inteira, ignorando as rolagens */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4); /* Fundo preto transparente para escurecer o site atrás */
+  z-index: 200; /* Joga na camada mais à frente de todas */
+  align-items: center;
+  justify-content: center;
+}
+
+/* MÁGICA DA JANELA: Quando o JavaScript adicionar 'active', ela brota na tela */
+.fundo-escuro-detalhes.active {
+  display: flex; /* Torna a caixinha visível e centralizada */
+}
+
+/* O Cartão branco flutuante de informações */
+.card-detalhes {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 480px; /* Largura máxima idêntica à da sua foto */
+  border-radius: 24px; /* Cantos bem arredondados e elegantes */
+  padding: 35px;
+  position: relative; /* Referência para colar o X no topo */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); /* Sombra forte para dar destaque e profundidade */
+  display: flex;
+  flex-direction: column; /* Empilha os textos, a foto e os botões da caixinha */
+  gap: 25px;
+}
+
+/* O botão de fechar (O 'X' no canto superior direito) */
+.fechar-x {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px; /* Deixa o X grande e fácil de clicar */
+  color: #a0aec0;
+  cursor: pointer;
+}
+
+.fechar-x:hover {
+  color: #4a5568; /* Escurece ao passar o mouse */
+}
+
+/* Bloco de textos superiores do cartão */
+.cabecalho-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tipo-unidade {
+  color: var(--text-color-title-span-localizacao); /* Azul oficial */
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px; /* Espaçamento sutil entre as letras */
+}
+
+.cabecalho-detalhes h2 {
+  font-family: var(--font-text-localizacao);
+  color: #1a202c;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cabecalho-detalhes p {
+  font-family: var(--font-text-localizacao);
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Caixa da foto real da Fábrica */
+.foto-detalhes {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px; /* Arredonda os cantos da foto interna */
+  overflow: hidden;
+}
+
+.foto-detalhes img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Adapta a foto para preencher o espaço sem amassar */
+}
+
+/* Linha com os dois botões da base (Conhecer e Fechar) */
+.botoes-detalhes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Afasta o botão azul do texto de fechar */
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Botão Azul (Conhecer unidade) */
+.btn-conhecer {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #ffffff;
+  color: var(--text-color-title-span-localizacao);
+  border: 1px solid var(--text-color-title-span-localizacao); /* Contorno azul oficial */
+  font-family: var(--font-text-localizacao);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.btn-conhecer:hover {
+  background-color: #ecf5ff; /* Acende um azul piscina super transparente de fundo */
+}
+
+/* Botão simples de texto (Fechar) */
+.btn-fechar-texto {
+  font-family: var(--font-text-localizacao);
+  color: #4a5568;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-fechar-texto:hover {
+  color: #1a202c; /* Escurece o texto ao passar o mouse */
+}
+
+/* ==========================================================================
+   13. Configuração da Seção 6 (FeedBack) 
+   ========================================================================== */
+
+.FeedBack {
+  width: 100%;
+  background-color: var(
+    --background-section-feedback
+  ); /* Fundo claro da seção */
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column; /* Empilha a pílula no topo e as caixas embaixo */
+  align-items: center; /* Centraliza todo mundo no meio da tela */
+  gap: 50px; /* Espaço entre a pílula e os cartões */
+}
+
+/* A pílula arredondada do topo */
+.tag-feedback {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre o balão azul e o texto */
+  background-color: #ffffff; /* Fundo branco limpo */
+  border: 1px solid #000000; /* Bordinha fina cinza */
+  padding: 8px 25px;
+  border-radius: 30px; /* Deixa no formato oval de pílula */
+}
+
+.tag-feedback span {
+  font-family: var(--font-text-feedback);
+  color: var(--text-color-tag-feedback); /* Azul oficial */
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px; /* Espaçamento sutil entre as letras */
+}
+
+.tag-feedback img {
+  width: 16px;
+  height: auto;
+}
+
+/* Linha que segura as 3 caixas de depoimento */
+.container-feedback {
+  display: flex; /* Coloca as caixas uma ao lado da outra em linha */
+  justify-content: center;
+  gap: 30px; /* Espaço exato entre as caixas */
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* O cartão azul escuro individual */
+.card-feedback {
+  flex: 1; /* Divide o espaço da tela igualmente entre as 3 caixas */
+  background-color: var(
+    --background-color-card-feedback
+  ); /* Azul escuro do cartão */
+  border-radius: 25px; /* Cantos bem arredondados conforme a imagem */
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column; /* Empilha os itens de dentro do cartão de cima para baixo */
+  gap: 15px; /* Espaçamento interno entre as aspas, estrelas e texto */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Sombra bem sutil abaixo da caixa */
+}
+
+/* Tamanho do ícone de aspas no topo */
+.aspas {
+  width: 100px;
+  height: auto;
+}
+
+/* Estrelas de avaliação */
+.estrelas {
+  color: #38bdf8; /* Tom de azul claro brilhante para as estrelas */
+  font-size: 18px;
+  letter-spacing: 3px; /* Ajusta o espaçamento entre as aspas para que fiquem mais próximas */
+}
+
+/* O parágrafo de depoimento do cliente */
+.texto-depoimento {
+  font-family: var(--font-text-feedback);
+  color: #ffffff; /* Texto em branco */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5; /* Espaço confortável entre as linhas da frase */
+  min-height: 90px; /* Garante que todas as caixas tenham a mesma altura de texto */
+}
+
+/* Bloco do autor (Foto + Nome) na base da caixa */
+.autor-feedback {
+  display: flex; /* Coloca a foto redonda ao lado do nome */
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px; /* Afasta o autor do texto do depoimento */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória fina e suave */
+  padding-top: 15px;
+}
+
+/* O círculo cinza da foto do usuário */
+.foto-autor {
+  width: 45px;
+  height: 45px;
+  background-color: #d1d5db; /* Cor cinza padrão da sua foto */
+  border-radius: 50%; /* Deixa perfeitamente redondo */
+}
+
+/* Caixa com o nome e o cargo empilhados */
+.dados-autor {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dados-autor h4 {
+  font-family: var(--font-text-feedback);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.dados-autor span {
+  font-family: var(--font-text-feedback);
+  color: rgba(255, 255, 255, 0.5); /* Texto do cargo cinza claro/suave */
+  font-size: 13px;
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   14. CONFIGURAÇÃO DO RODAPÉ (FOOTER) 
+   ========================================================================== */
+
+.rodape {
+  width: 100%;
+  background: var(--background-footer);
+  padding: 60px 80px 40px 80px; /* Espaço para respirar dentro do rodapé */
+  display: flex;
+  flex-direction: column; /* Empilha a logo, as colunas e as redes de cima para baixo */
+  align-items: center; /* Centraliza a logo e a barra de redes sociais */
+  gap: 40px; /* Distância padrão entre os blocos verticais */
+}
+
+/* Força a logo do topo do rodapé a ficar centralizada */
+.logo-topo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Caixa que segura as duas colunas principais */
+.conteudo-rodape {
+  display: flex; /* Coloca a coluna da esquerda ao lado da direita */
+  justify-content: space-between; /* Afasta as duas colunas para os cantos da tela */
+  width: 100%;
+  max-width: 1100px; /* Limita a largura total para não espalhar demais */
+  gap: 100px; /* Vão de espaço entre as duas colunas */
+}
+
+/* Configuração geral para as duas caixas de colunas */
+.conteudo-esquerdo,
+.conteudo-direito {
+  flex: 1; /* Divide o espaço igualmente entre as duas colunas */
+  display: flex;
+  flex-direction: column; /* Empilha os textos e links de cima para baixo */
+  align-items: flex-start; /* Alinha todas as linhas textuais na lateral esquerda */
+}
+
+/* Configuração dos Títulos (Contato e Links Úteis) */
+.conteudo-esquerdo h1 {
+  font-family: var(--font-text-rodape);
+  color: var(--text-color-title-rodape); /* Azul claro */
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px; /* Afasta o título das linhas de baixo */
+}
+.conteudo-direito h1 {
+  font-family: var(--font-text-rodape);
+  color: var(--text-color-title-rodape); /* Azul claro */
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 50px; /* Afasta o título das linhas de baixo */
+}
+
+/* Estilo para as etiquetas fixas do lado esquerdo (E-mail, SAC, Ouvidoria) */
+.conteudo-esquerdo p {
+  font-family: var(--font-text-rodape);
+  color: var(--text-color-sub-rodape); /* Cinza claro */
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 12px; /* Afasta ligeiramente do link anterior de cima */
+}
+
+/* Estilo para os Links clicáveis (E-mails, Telefones e Páginas) */
+.conteudo-esquerdo a {
+  font-family: var(--font-text-rodape);
+  color: var(--text-color-links-rodape); /* Letras brancas */
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 4px; /* Cola o link perto do seu parágrafo correspondente */
+  text-decoration: underline; /* Adiciona o sublinhado elegante */
+  line-height: 1.4;
+  transition: opacity 0.2s;
+}
+.conteudo-direito a {
+  font-family: var(--font-text-rodape);
+  color: var(--text-color-links-rodape); /* Letras brancas */
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 4px; /* Cola o link perto do seu parágrafo correspondente */
+  text-decoration: underline; /* Adiciona o sublinhado elegante */
+  line-height: 1.4;
+  transition: opacity 0.2s;
+}
+
+/* Efeito sutil ao passar o mouse em qualquer link do rodapé */
+.conteudo-esquerdo a:hover,
+.conteudo-direito a:hover {
+  opacity: 0.7;
+}
+
+/* Estilização específica das duas logos inferiores (Biolab em Casa e Studio) */
+.conteudo-esquerdo img {
+  width: 180px; /* Tamanho controlado das marcas inferiores */
+  height: auto;
+  margin-top: 30px; /* Afasta a logo do final dos textos superiores */
+  text-decoration: none; /* Garante que o link da imagem não ganhe sublinhado */
+}
+.conteudo-direito img {
+  width: 180px; /* Tamanho controlado das marcas inferiores */
+  height: auto;
+  margin-top: 120px; /* Afasta a logo do final dos textos superiores */
+  text-decoration: none; /* Garante que o link da imagem não ganhe sublinhado */
+}
+.direitoAutorais {
+  font-family: var(--font-text-rodape);
+  color: var(--text-color-sub-rodape); /* Cinza claro */
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 20px; /* Afasta o texto de direitos autorais da logo de baixo */
+}
+
+/* ==========================================================================
+   14. BARRA DE REDES SOCIAIS (BASE DO SITE)
+   ========================================================================== */
+
+.sociais-rodape {
+  display: flex; /* Coloca os ícones um ao lado do outro em linha */
+  justify-content: center; /* Centraliza o grupo de redes na tela */
+  gap: 25px; /* Espaço fixo entre cada ícone social */
+  margin-top: 20px; /* Afasta as redes sociais das colunas de cima */
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha divisória bem discreta na base */
+  padding-top: 30px; /* Afasta os ícones da linha divisória */
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Ajuste de tamanho e cor de todos os ícones sociais de SVG */
+.sociais-rodape img {
+  width: 32px; /* Tamanho simétrico de cada círculo social */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  filter: brightness(0) invert(0.8); /* deixa em branco os icones */
+}
+
+/* Leve efeito de crescimento ao passar o mouse na rede social */
+.sociais-rodape img:hover {
+  transform: scale(1.1);
+  filter: brightness(0) invert(1); /* Fica totalmente aceso em branco brilhante */
+}
+
+/*
+=======================================================================
+===
+ 13. Configuração da Seção 6 (FeedBack)
+ 
+=======================================================================
+=== */
+.FeedBack {
+  width: 100%;
+  background-color: var(--background-section-feedback); /* Fundo claro da seção */
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column; /* Empilha a pílula no topo e o carrossel embaixo */
+  align-items: center; /* Centraliza os blocos horizontalmente */
+  gap: 50px; /* Espaço entre a pílula e os cartões */
+}
+
+/* A pílula arredondada do topo */
+.tag-feedback {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre o balão azul e o texto */
+  background-color: #ffffff; /* Fundo branco limpo */
+  border: 1px solid #000000; /* Bordinha fina cinza */
+  padding: 8px 25px;
+  border-radius: 30px; /* Deixa no formato oval de pílula */
+}
+
+.tag-feedback span {
+  font-family: var(--font-text-feedback);
+  color: var(--text-color-tag-feedback); /* Azul oficial */
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px; /* Espaçamento sutil entre as letras */
+}
+
+.tag-feedback img {
+  width: 16px;
+  height: auto;
+}
+
+/* Moldura invisível que esconde e gerencia os cartões excedentes lateralmente */
+.janela-feedback {
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+  padding: 10px 20px;
+}
+
+/* O trilho que organiza os depoimentos lado a lado e permite o movimento */
+.trilho-feedback {
+  display: flex;
+  gap: 30px; /* Espaço exato entre as caixas */
+  overflow-x: auto; /* Permite arrastar/scrollar lateralmente */
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Oculta a barra de rolagem padrão no Firefox */
+}
+
+.trilho-feedback::-webkit-scrollbar {
+  display: none; /* Oculta a barra de rolagem padrão no Chrome e Safari */
+}
+
+/* O cartão azul escuro individual */
+.card-feedback {
+  flex: 0 0 calc(33.333% - 20px); /* Divide o espaço para exibir 3 cartões por vez na tela */
+  min-width: 320px; /* Garante que os cards fiquem legíveis em telas menores */
+  background-color: var(--background-color-card-feedback); /* Azul escuro do cartão */
+  border-radius: 25px; /* Cantos bem arredondados conforme a imagem */
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Ícone estilizado de aspas no topo */
+.aspas-feedback {
+  font-size: 60px;
+  font-family: sans-serif;
+  color: #00baec; /* Tom azul claro para destaque das aspas */
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  line-height: 1;
+}
+
+/* Bloco das estrelas de avaliação */
+.estrelas-feedback {
+  color: #00baec;
+  font-size: 16px;
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+
+/* Texto descritivo do feedback */
+.texto-feedback {
+  color: #ffffff;
+  font-family: var(--font-text-feedback);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  flex-grow: 1; /* Garante alinhamento uniforme do rodapé caso os textos tenham tamanhos diferentes */
+}
+
+/* Container do usuário na base do card */
+.usuario-feedback {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Imagem circular do avatar */
+.avatar-feedback {
+  width: 45px;
+  height: 45px;
+  background-color: #cbd5e0; /* Cor cinza neutra simulando a imagem padrão */
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Bloco dos textos de identificação */
+.info-usuario-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nome-feedback {
+  color: #ffffff;
+  font-family: var(--font-text-feedback);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cargo-feedback {
+  color: #a0aec0; /* Tom cinza claro para o cargo secundário */
+  font-family: var(--font-text-feedback);
+  font-size: 12px;
+}
+/* Estilização específica das setas da seção de feedback */
+.seta-feedback {
+  position: absolute;
+  top: 55%; /* Centraliza com base na altura dos cards */
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 50px;
+  border-radius: 15%;
+  background-color: rgba(255, 255, 255, 0.7); /* Vidro fosco mais visível sobre o fundo claro */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.seta-feedback:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.seta-feedback img {
+  width: 20px;
+  height: auto;
+  filter: brightness(0); /* Altera a cor da seta interna para preto para contrastar com o fundo claro */
+  pointer-events: none;
+}
+
+.seta-esquerda-feedback {
+  left: 40px;
+}
+
+.seta-esquerda-feedback img {
+  transform: scaleX(-1); /* Inverte o ícone para apontar para a esquerda */
+}
+
+.seta-direita-feedback {
+  right: 40px;
+}
+
+/* Ajuste posicional do elemento pai para as setas absolutas funcionarem corretamente */
+.FeedBack {
+  position: relative;
+}
