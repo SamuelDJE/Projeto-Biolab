@@ -11,9 +11,9 @@
 
   /* Seção PDI */
   --font-text-pdi: "Roboto";
-  --font-size-pdi: 18px;
-  --font-size-title-pdi: 30px;
-  --font-weight-pdi: 300;
+  --font-size-pdi: 25px;
+  --font-size-title-pdi: 35px;
+  --font-weight-pdi: 350;
   --font-weight-title-pdi: 500;
   --text-color-title-pdi: #006cec;
   --text-color-texto-pdi: #191919;
@@ -21,10 +21,13 @@
 
   /* Seção ESG */
   --font-text-esg: "Roboto";
-  --font-size-esg: 18px;
-  --font-size-title-esg: 30px;
+  --font-size-esg: 22px;
+  --font-size-title-esg: 40px;
+  --font-size-botao-esg: 20px;
+  --font-size-subtitulo-esg: 18px;
   --font-weight-esg: 300;
   --font-weight-title-esg: 500;
+  --font-weight-botao-esg: 500;
   --text-color-title-esg: #ffffff;
   --text-color-title-span-esg: #006cec;
   --text-color-texto-esg: #ffffff;

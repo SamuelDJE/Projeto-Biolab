@@ -388,7 +388,7 @@
 /* Caixa geral que segura todos os textos da direita */
 .PDI-conteudo {
   flex: 1; /* Faz o bloco de texto se adaptar ao espaço que sobrou */
-  max-width: 600px; /* Evita que as linhas de texto fiquem longas demais e cansem os olhos */
+  max-width: 700px; /* Evita que as linhas de texto fiquem longas demais e cansem os olhos */
 }
 
 /* Configurações exclusivas do Título Principal */
@@ -402,10 +402,10 @@
 
 /* Configurações exclusivas das frases do Parágrafo */
 .PDI-conteudo p {
-  color: var(--text-color-texto-pdi); /* Puxa o cinza escuro #191919 */
-  font-family: var(--font-text-pdi); /* Roboto */
-  font-size: var(--font-size-pdi); /* 18px */
-  font-weight: var(--font-weight-pdi); /* 300 */
+  color: var(--text-color-texto-pdi); 
+  font-family: var(--font-text-pdi); 
+  font-size: var(--font-size-pdi); 
+  font-weight: var(--font-weight-pdi); 
 
   /* A MÁGICA DO ACABAMENTO: Cria um espaço confortável de respiração entre as linhas 
      do seu texto para que as frases com <br> não fiquem coladas umas nas outras */
@@ -468,7 +468,7 @@
   background: var(--background-button-esg); /* Fundo azul escuro dos botões */
   border: 1px solid #434a5837; /* Borda sutil de contorno */
   padding: 15px 25px;
-  gap: 7px;
+  gap: 10px;
   border-radius: 50px; /* Deixa as caixas totalmente arredondadas (formato pílula) */
   min-width: 250px; /* Largura mínima para as caixas ficarem do mesmo tamanho */
   transition:
@@ -484,7 +484,7 @@
 
 /* Ícones redondos grandes da esquerda */
 .icone-pilar {
-  width: 45px;
+  width: 60px;
   height: auto;
 }
 
@@ -504,20 +504,20 @@
 .titulo-pilar {
   color: #ffffff;
   font-family: var(--font-text-esg);
-  font-size: 16px;
-  font-weight: 500;
+  font-size: var(--font-size-botao-esg);
+  font-weight: var(--font-weight-botao-esg);
 }
 
 /* Estilo do subtítulo de tradução (embaixo) */
 .subtitulo-pilar {
   color: var(--text-color-texto-subtitulo-esg); /* azul claro #006CEC */
   font-family: var(--font-text-esg);
-  font-size: 13px;
+  font-size: var(--font-size-subtitulo-esg);
 }
 
 /* Seta azul de clique da ponta direita */
 .seta-pilar {
-  width: 20px;
+  width: 30px;
   height: auto;
 }
 /* ==========================================================================
@@ -934,9 +934,7 @@
 
 .FeedBack {
   width: 100%;
-  background-color: var(
-    --background-section-feedback
-  ); /* Fundo claro da seção */
+  background-color: var(--background-section-feedback); /* Fundo claro da seção */
   padding: 80px 60px;
   display: flex;
   flex-direction: column; /* Empilha a pílula no topo e as caixas embaixo */
@@ -1028,7 +1026,7 @@
 .foto-autor {
   width: 45px;
   height: 45px;
-  background-color: #d1d5db; /* Cor cinza padrão da sua foto */
+  background-image: url("/src/assets/images/avertAnimal.svg"); 
   border-radius: 50%; /* Deixa perfeitamente redondo */
 }
 
@@ -1199,11 +1197,8 @@
 
 /*
 =======================================================================
-===
  13. Configuração da Seção 6 (FeedBack)
- 
-=======================================================================
-=== */
+======================================================================= */
 .FeedBack {
   width: 100%;
   background-color: var(--background-section-feedback); /* Fundo claro da seção */
@@ -1212,6 +1207,8 @@
   flex-direction: column; /* Empilha a pílula no topo e o carrossel embaixo */
   align-items: center; /* Centraliza os blocos horizontalmente */
   gap: 50px; /* Espaço entre a pílula e os cartões */
+  position: relative; /* Ajuste posicional do pai para as setas absolutas */
+  box-sizing: border-box;
 }
 
 /* A pílula arredondada do topo */
@@ -1220,7 +1217,7 @@
   align-items: center;
   gap: 8px; /* Espaço entre o balão azul e o texto */
   background-color: #ffffff; /* Fundo branco limpo */
-  border: 1px solid #000000; /* Bordinha fina cinza */
+  border: 1px solid #000000; /* Bordinha fina preta */
   padding: 8px 25px;
   border-radius: 30px; /* Deixa no formato oval de pílula */
 }
@@ -1243,14 +1240,15 @@
   width: 100%;
   max-width: 1200px;
   overflow: hidden;
-  padding: 10px 20px;
+  padding: 10px 0; /* Removido padding lateral para alinhar as pontas perfeitamente */
+  box-sizing: border-box;
 }
 
 /* O trilho que organiza os depoimentos lado a lado e permite o movimento */
 .trilho-feedback {
   display: flex;
   gap: 30px; /* Espaço exato entre as caixas */
-  overflow-x: auto; /* Permite arrastar/scrollar lateralmente */
+  overflow-x: hidden; /* Oculta a barra nativa para o controle total via JavaScript das setas */
   scroll-behavior: smooth;
   scrollbar-width: none; /* Oculta a barra de rolagem padrão no Firefox */
 }
@@ -1261,7 +1259,8 @@
 
 /* O cartão azul escuro individual */
 .card-feedback {
-  flex: 0 0 calc(33.333% - 20px); /* Divide o espaço para exibir 3 cartões por vez na tela */
+  /* CORREÇÃO MATEMÁTICA: Exibe exatamente 3 cartões por vez alinhados com o gap de 30px */
+  flex: 0 0 calc(33.333% - 20px); 
   min-width: 320px; /* Garante que os cards fiquem legíveis em telas menores */
   background-color: var(--background-color-card-feedback); /* Azul escuro do cartão */
   border-radius: 25px; /* Cantos bem arredondados conforme a imagem */
@@ -1270,6 +1269,7 @@
   flex-direction: column;
   position: relative;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box; /* Garante que os paddings não estofem a largura do card */
 }
 
 /* Ícone estilizado de aspas no topo */
@@ -1308,13 +1308,15 @@
   gap: 15px;
 }
 
-/* Imagem circular do avatar */
+/* CORREÇÃO: Imagem circular do avatar configurada para fotos reais */
 .avatar-feedback {
   width: 45px;
   height: 45px;
-  background-color: #cbd5e0; /* Cor cinza neutra simulando a imagem padrão */
+  background-color: #cbd5e0; /* Cor cinza neutra caso a imagem quebre */
   border-radius: 50%;
   flex-shrink: 0;
+  object-fit: cover; /* Corta a imagem sem achatar */
+  object-position: center; /* Mantém o foco no centro do rosto */
 }
 
 /* Bloco dos textos de identificação */
@@ -1336,6 +1338,7 @@
   font-family: var(--font-text-feedback);
   font-size: 12px;
 }
+
 /* Estilização específica das setas da seção de feedback */
 .seta-feedback {
   position: absolute;
@@ -1377,9 +1380,4 @@
 
 .seta-direita-feedback {
   right: 40px;
-}
-
-/* Ajuste posicional do elemento pai para as setas absolutas funcionarem corretamente */
-.FeedBack {
-  position: relative;
 }
